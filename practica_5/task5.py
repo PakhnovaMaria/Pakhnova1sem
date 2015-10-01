@@ -1,3 +1,6 @@
-A = [1, 2, 3, 4, 5]
-A.insert(0, A[-1])
-print(A[0: -1])
+from random import randint
+
+O = open('int_data.txt', 'w')
+for i in range(1000000):
+    O.write(str(randint(0, 100))+' ')
+O.close()
