@@ -1,4 +1,4 @@
 A = []
-for i in range(int(input())):
-    A.append(int(input()))
-print(A[::2])
+for i in range(int(input()):
+    A.append(int(input())
+print(A[::2]

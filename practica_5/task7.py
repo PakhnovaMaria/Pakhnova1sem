@@ -10,4 +10,3 @@ for num in set(numbers):
         min = num
 print(max, min)
 print(len(set(numbers)))
-
