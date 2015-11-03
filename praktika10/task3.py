@@ -2,9 +2,12 @@ I = open('input.txt', 'r')
 words = I.read()
 words = words.replace('.',' ').replace(',',' ').replace('?',' ').replace('!',' ')
 words = words.lower()
-n = 1
+max = 1
 for x in words:
-    if
-
+    i = words.count(x)
+    if i > max:
+        max = i
+        a = x
+print(a)
 print(words)
 I.close()
