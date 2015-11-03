@@ -1,15 +1,24 @@
 from decimal import *
-#getcontext().prec = 2
+# getcontext().prec = 2
 
-Summa = int(input())
+
+def money(summa, percent, year):
+    p = percent/1200
+    x = summa * p * ((1 + p)**(year * 12)) / (-1 + (1 + p) ** (year * 12))
+    return x
+
+
+def overpay(summa, percent, year):
+    over = money(summa, percent, year) * 12 * year - summa
+    return over
+
+# from Decimal import Decimal, getcontext
+
+summa = int(input())
 percent = float(input())
 year = int(input())
-def money(Summa,percent,year):
-    P = percent/1200
-    x = Summa * P * ((1 + P)**(year * 12))/ (-1 + (1 + P) ** (year * 12))
-    return x
-def overpay(Summa, percent, year):
-    over = money(Summa, percent, year) * 12 * year - Summa
-    return over
-#from Decimal import Decimal, getcontext
-print(((Decimal(money(Summa, percent, year)).quantize(Decimal('0.01'))),Decimal(overpay(Summa, percent, year)).quantize(Decimal('0.01'))))
+
+value1 = Decimal(money(summa, percent, year)).quantize(Decimal('0.01'))
+value2 = Decimal(overpay(summa, percent, year)).quantize(Decimal('0.01'))
+
+print(value1, value2)
