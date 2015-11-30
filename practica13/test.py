@@ -93,7 +93,7 @@ class SimpleTests(TestCase):
 
         c = a + b
 
-        self.assertTrue(c, _c)
+        self.assertEqual(c, _c)
 
     def testMatrixSub(self):
         """Вычитание матриц"""
@@ -121,7 +121,7 @@ class SimpleTests(TestCase):
 
         c = a - b
 
-        self.assertTrue(c, _c)
+        self.assertEqual(c, _c)
 
     def testMatrixScalarMul(self):
         """Умножение матрицы на число"""
@@ -142,7 +142,7 @@ class SimpleTests(TestCase):
         self.assertEqual(b, a + a)
 
         b = a * 1.5
-
+        print(b, _a + _a + _a)
         self.assertEqual(b, _a + _a + _a)
 
     def testMatrixScalarDiv(self):
@@ -184,7 +184,6 @@ class SimpleTests(TestCase):
         b.set(1, 1, 4)
         b.set(0, 2, 5)
         b.set(1, 2, 6)
-
         self.assertEqual(a.transpose(), b)
 
     def testMatrixMul(self):
@@ -212,7 +211,6 @@ class SimpleTests(TestCase):
         c.set(0, 1, 32)
         c.set(1, 0, 101)
         c.set(1, 1, 86)
-
         self.assertEqual(a * b, c)
 
     def testMatrixMulWithWrongSizes(self):

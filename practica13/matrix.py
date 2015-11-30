@@ -1,45 +1,48 @@
 class Matrix:
-    def __init__(self, m, n=None):# m - колво строк, n- колво столбцов
-        if not (isinstance(m, int) or isinstance(m, list)):
-            raise ValueError()
-        if n != None:
-            if not(isinstance(n, int) or isinstance(n, list)):
-                raise ValueError()
-        if m <= 0:
-            raise ValueError()
-        if n == None:
-            M = m
+    def __init__(self, m, n=None):
+        if isinstance(m, int):
+            if not isinstance(n, int): raise ValueError()
+            if n<=0 or m<=0: raise ValueError()
+            self.m = m
+            self.n = n
+            self.Matr = [[0] * n for i in range(m)]
+        elif not isinstance(m, list): raise ValueError()
+        else:
+            if len(m) == 0: raise ValueError()
+            if n!= None: raise ValueError()
             self.Matr = m
-            self.m = len(M)
-            self.n = len(M[0])
-            if not isinstance(m, list): raise ValueError()
-        if type(m) == int and type(n) == int:
-            if n > 0 and m > 0:
-                self.m = m
-                self.n = n
-                self.Matr = [[0] * n for i in range(m)]
+            self.m = len(m)
+            self.n = len(m[0])
 
     def __add__(self, other):
-        if self.m == other.m and self.n == other.n:
-            for i in range(self.m):
-                for j in range(self.n):
-                    self.Matr[i][j] = self.Matr[i][j] + other.Mart[i][j]
-                    return self.Matr
+        if self.m != other.m or self.n != other.n:
+            raise ValueError()
+
+        body = [[None]*self.n for i in range(self.m)]
+
+        for i in range(self.m):
+            for j in range(self.n):
+                body[i][j] = self.Matr[i][j] + other.Matr[i][j]
+        return Matrix(body)
 
     def __eq__(self, other):
-        if self.m == other.m and self.n == other.n:
-            for i in range(self.m):
-                for j in range(self.n):
-                    if self.Matr[i][j] != other.Matr[i][j]:
-                        return False
-                return True
+        if self.m != other.m or self.n != other.n: raise RuntimeError()
+        for i in range(self.m):
+            for j in range(self.n):
+                if self.Matr[i][j] != other.Matr[i][j]:
+                    return False
+            return True
 
     def __sub__(self, other):
-          if self.m == other.m and self.n == other.n:
-            for i in range(self.m):
-                for j in range(self.n):
-                    self.Matr[i][j] = self.Matr[i][j] - other.Mart[i][j]
-                    return self.Matr
+        if self.m != other.m or self.n != other.n:
+            raise ValueError()
+
+        body = [[None]*self.n for i in range(self.m)]
+
+        for i in range(self.m):
+            for j in range(self.n):
+                body[i][j] = self.Matr[i][j] - other.Matr[i][j]
+        return Matrix(body)
 
     def get(self, i, j):
         return self.Matr[i][j]
@@ -58,21 +61,41 @@ class Matrix:
         return A
 
     def transpose(self):
-        if self.m == self.n:
-            for i in range(self.m):
-                for j in range(self.n):
-                    if i < j:
-                        self.Matr[i][j], self.Matr[j][i] = self.Matr[j][i], self.Matr[i][j]
-                        return self.Matr
+        body = [[None]*self.m for i in range(self.n)]
+        for i in range(self.m):
+            for j in range(self.n):
+                body[j][i] = self.Matr[i][j]
+        return Matrix(body)
 
     def __mul__(self, other):
-        if type(other) == int:
+        if type(other) in [int, float]:
+             body = [[None]*self.n for i in range(self.m)]
              for i in range(self.m):
                 for j in range(self.n):
-                    self.Matr[i][j] = self.Matr[i][j] * other
-                    return self.Matr
+                    body[i][j] = self.Matr[i][j] * other
+        elif type(other) != Matrix: raise RuntimeError()
+        else:
+            if self.n != other.m: raise RuntimeError()
+            body = [[None]*other.n for i in range(self.m)]
+            for i in range(self.m):
+                for j in range(other.n):
+                    body[i][j] = 0
+                    for k in range(self.n):
+                        body[i][j] += self.Matr[i][k]*other.Matr[k][j]
+        return Matrix(body)
+
+
+    def __truediv__(self, other):
+        if type(other) in [int, float]:
+            return self * (1/other)
+
+
+
     def determinant(self):
         pass
+
+    def __str__(self):
+        return str(self.Matr)
 
 
 
