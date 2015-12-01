@@ -1,4 +1,2 @@
-A = []
-for i in range(int(input()):
-    A.append(int(input())
-print(A[::2]
+A = input().split()
+print(A[::2])

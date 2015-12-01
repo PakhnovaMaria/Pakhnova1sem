@@ -1,4 +1,3 @@
-A = []
-for i in range(int(input())):
-    A.append(int(input()))
+A = input().split()
+A = [int(i) for i in A]
 print (max(A))

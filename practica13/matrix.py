@@ -6,10 +6,13 @@ class Matrix:
             self.m = m
             self.n = n
             self.Matr = [[0] * n for i in range(m)]
-        elif not isinstance(m, list): raise ValueError()
+        elif not isinstance(m, list):
+            raise ValueError()
         else:
-            if len(m) == 0: raise ValueError()
-            if n!= None: raise ValueError()
+            if len(m) == 0:
+                raise ValueError()
+            if n != None:
+                raise ValueError()
             self.Matr = m
             self.m = len(m)
             self.n = len(m[0])
@@ -26,7 +29,8 @@ class Matrix:
         return Matrix(body)
 
     def __eq__(self, other):
-        if self.m != other.m or self.n != other.n: raise RuntimeError()
+        if self.m != other.m or self.n != other.n:
+            raise RuntimeError()
         for i in range(self.m):
             for j in range(self.n):
                 if self.Matr[i][j] != other.Matr[i][j]:
@@ -88,7 +92,6 @@ class Matrix:
     def __truediv__(self, other):
         if type(other) in [int, float]:
             return self * (1/other)
-
 
 
     def determinant(self):

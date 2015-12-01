@@ -19,4 +19,4 @@ for i in range(N):
     a = Point(input())
     x += a.x
     y += a.y
-print((x)/N, (y)/N)
+print(x/N, (y)/N)
