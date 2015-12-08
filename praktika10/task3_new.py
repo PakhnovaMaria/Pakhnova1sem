@@ -6,4 +6,4 @@ B = {}
 for b in words:
     B[(b)] = words.count(b)
 print(B)
-\ No newline at end of file
+I.close()
