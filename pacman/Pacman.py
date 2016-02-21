@@ -151,13 +151,37 @@ class Pacman(GameObject):
         self.direction = 0
         self.velocity = 4.0 / 10.0
 
+    def __get_direction(self):
+        return self.__direction
+
+    def _set_direction(self,d):
+        self.__direction = d
+        if d == 1:
+            self.image = pygame.image.load('C:/Users/Sergey/PycharmProjects/untitled2/Pacman/resources/pacman_right.png')
+        elif d == 2:
+            self.image = pygame.image.load('C:/Users/Sergey/PycharmProjects/untitled2/Pacman/resources/pacman_down.png')
+        elif d == 3:
+            self.image = pygame.image.load('C:/Users/Sergey/PycharmProjects/untitled2/Pacman/resources/pacman_left.png')
+        elif d == 4:
+            self.image = pygame.image.load('C:/Users/Sergey/PycharmProjects/untitled2/Pacman/resources/pacman_up.png')
+       # elif self.direction != 0:
+        #    raise ValueError("invalid direction detected")
+
+    direction = property(__get_direction, _set_direction)
+
     def game_tick(self):
         super(Pacman, self).game_tick()
+        self.set_coord(self.x, self.y)
+
         if self.direction == 1:
             if m.map[int(self.y)][int(self.x)+1].isWall == False:
                 self.x += self.velocity
                 if self.x >= self.map_size-1:
                     self.x = self.map_size-1
+           # if m.map[int(self.y)][int(self.x)+1].food == True:
+            #    m.map[int(self.y)][int(self.x)+1] = None
+             #   self.x += self.velocity
+              #  pacman.velocity = 10.0/10.0
 
         elif self.direction == 2:
             if m.map[int(self.y)+1][int(self.x)].isWall == False:
@@ -176,14 +200,6 @@ class Pacman(GameObject):
                 self.y -= self.velocity
                 if self.y <= 0:
                     self.y = 0
-
-        if m.map[int(self.y)][int(self.x)].food == True:
-            m.map[int(self.y)][int(self.x)] = pygame.image.load('C:/Users/Sergey/PycharmProjects/untitled2/Pacman/resources/wall.png')
-
-
-
-        self.set_coord(self.x, self.y)
-
 
 class Item(GameObject):
 
