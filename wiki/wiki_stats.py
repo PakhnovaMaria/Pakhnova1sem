@@ -109,5 +109,3 @@ if __name__ == '__main__':
     print(wg.get_number_of_links_from(i) for i in range(10))
 
     print('Cреднее количество ссылок в статье', statistics.mean([wg.get_number_of_links_from(i) for i in range(wg.get_number_of_pages())]))
-
-
