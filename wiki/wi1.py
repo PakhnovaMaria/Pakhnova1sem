@@ -1,3 +1,40 @@
-f = open('C:/Users/Sergey/PycharmProjects/untitled2/wiki/wiki_small.txt', 'r')
-n, _nlinks = f.readline().split()
-print(n, _nlinks)
+""" print('Количество статей с перенаправлениями', sum(1 for i in range(wg.get_number_of_pages())
+                                                       if wg.is_redirect(i) == True))
+
+    print('Минимальное количество ссылок из статьи', min(M))
+
+    print('Количество статей с минимальным количеством ссылок', sum(1 for i in range(len(M))
+                                                                  if wg.get_number_of_links_from(i) == min(M)))
+
+    print('Максимальное количество ссылок из статьи', max(M))
+
+    print('Количество статей с максимальным количеством ссылок', sum(1 for i in range(len(M))
+                                                                    if wg.get_number_of_links_from(i) == max(M)))
+
+    print('Cтатья с наибольшим количеством ссылок', [i for i in Matrix])
+
+    print('Cреднее количество ссылок в статье', round(statistics.mean(M), 2))
+
+    print('Минимальное количество ссылок на статью', min(matrix))
+
+    print('Mаксимальное количество ссылок на статью', max(matrix))
+
+    print('Kоличество статей с минимальным количеством внешних ссылок', Min_number)
+
+    print('Количество статей с максимальным количеством внешних ссылок', Max_number)
+
+    print('Cтатья с наибольшим количеством внешних ссылок', Name_title)
+
+    print('Среднее количество внешних ссылок на статью', round(statistics.mean(matrix), 2))
+
+    print('Минимальное количество перенаправлений на статью', min(matrix1))
+
+    print('Максимальное количество перенаправлений на статью', max(matrix1))
+
+    print('Количество статей с минимальным количеством внешних перенаправлений', Min_number1)
+
+    print('Количество статей с максимальным количеством внешних перенаправлений', Max_number1)
+
+    print('Статья с наибольшим количеством внешних перенаправлений', Name_1)
+
+    print('Cреднее количество внешних перенаправлений на статью', round(statistics.mean(matrix1), 2))  """
