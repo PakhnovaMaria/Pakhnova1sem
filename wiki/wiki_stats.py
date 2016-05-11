@@ -222,9 +222,7 @@ if __name__ == '__main__':
 
 """     start = 'Python'
     finish = 'Cписок файловых систем'
-
     Bfs_fired = bfs_fired(wg.get_matrix_of_way(), start, set())
-
     if finish not in Bfs_fired:
         print('переход невозможен')
     else:
